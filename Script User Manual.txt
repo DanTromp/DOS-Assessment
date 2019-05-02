@@ -1,0 +1,25 @@
+Step 1:
+	Open SQL Server Management Studio and connect to the local / default instance
+
+Step 2:
+	Click "File" then "Open" and select script "NorthwindGenerate.sql"
+
+Step 3:
+	See that current database selected is "master"
+
+Step 4:
+	Execute script via 'F5'
+
+Step 5:
+	Refresh database list and "Northwind" will appear with stored procedure "[dbo].[pr_GetOrderSummary]" as well
+
+
+Alternative method (install from visual studio):
+Step 1:
+	Double click on the file "NorthwindGenerate.sql"
+
+Step 2:
+	From the menu ribbon, select "SQL" -> "Connections" -> "Connect" and connect to your default instance listed under "Local"
+
+Step 3:
+	See that "master" is selected from the dropdown, then execute the script via "SQL" -> "Execute"
