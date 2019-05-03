@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Messaging;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace DOS_Assessment
@@ -65,14 +66,13 @@ namespace DOS_Assessment
                 return null;
 
             var queueIter = msMq.GetMessageEnumerator2();
-            var timeout = TimeSpan.FromSeconds(3);
 
             ppl.peoples = new List<Person>();
 
             //Move through all the messages in the queue
-            while (queueIter.MoveNext(timeout))
+            while (queueIter.MoveNext())
             {
-                using (var message = msMq.ReceiveById(queueIter.Current.Id, timeout))
+                using (var message = msMq.ReceiveById(queueIter.Current.Id))
                 {
                     Person pp = (Person)message.Body;
 
@@ -84,7 +84,6 @@ namespace DOS_Assessment
                     });
                 }
             }
-
             return ppl;
 
         }

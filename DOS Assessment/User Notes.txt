@@ -1,0 +1,26 @@
+﻿Assuming that the windows feature MSMQ is enabled from the control panel:
+
+I haven't worked with MSMQ before but please test by running the "DOS Assessment" project in Debug.
+Once running, please see the below test requests I used to test the controller.
+
+You'll just have to change the localhost port.
+NOTE: I used Fiddler as my request client to test with.
+
+Unit tests are not implemented correctly, again I haven't worked with them before and will make sure to read up on them.
+
+POST RAW REQUEST:
+
+POST https://localhost:44317/api/Queuing/SignUp HTTP/1.1
+User-Agent: Fiddler
+Host: localhost:44317
+Content-Length: 37
+Content-type: application/json
+
+{"FirstName":"Dan", "LastName":"Ben"}
+
+GET RAW REQUEST:
+
+GET https://localhost:44317/api/Queuing/PendingMessages HTTP/1.1
+User-Agent: Fiddler
+Host: localhost:44317
+
