@@ -10,29 +10,29 @@ using Newtonsoft.Json;
 
 namespace DOS_Assessment.Controllers
 {
+    [RoutePrefix("api/{controller}/{action}")]
     public class QueuingController : ApiController
     {
-        MSMQ mSMQ = new MSMQ();
+        readonly MSMQ mSMQ = new MSMQ();
         const string queueName = @".\Private$\UserQueue";
-
-        // GET api/<controller>
-        public Message[] Get()
+        
+        [HttpGet]
+        public People PendingMessages()
         {
-
-            Message[] messages = mSMQ.GetAllMessagesInQueue(queueName);
+            var messages = mSMQ.GetAllMessagesInQueue(queueName);
 
             return messages;
         }
         
-        public string Post([FromBody]Person value)
+        [HttpPost]
+        public SignUpReply SignUp([FromBody]Person value)
         {
-            string successfulMsg = string.Empty;
+            SignUpReply supReply = new SignUpReply();
             
             if (value != null)
-                successfulMsg = mSMQ.SendMessageToQueue(queueName, value);
+                supReply = mSMQ.SendMessageToQueue(queueName, value);
 
-            return successfulMsg;
-
+            return supReply;
         }
     }
 }

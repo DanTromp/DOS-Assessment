@@ -162,7 +162,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\People.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\SignUpReply.cs" />
     <Compile Include="MSMQ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
